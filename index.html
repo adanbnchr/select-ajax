@@ -15,11 +15,34 @@
 	</select>
 
 <script type="text/javascript">
-	var opciones = {
+	/*var opciones = {
 		joven: ['Salir de marcha', 'Deportes', 'Jugar'],
 		adulto: ['Salir de cena', 'Cuidar hijos'],
 		mayor: ['Salir de comida', 'Cuidar nietos']
 	}
+	*/
+	var opciones;
+
+	$.ajax({
+		url: 'http://localhost:8080/api/aficiones/',
+		type: 'GET',
+		dataType: 'json'
+	})
+	.done(function(datosAJAX) {
+		console.log("success");
+		opciones = datosAJAX;
+		console.log(datosAJAX)
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+	
+
+
+
 	$("#edad").change(function() {
 		var edad = $("#edad").val();
 		var aficiones = opciones[edad];
