@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+</head>
+<body>
+	<select id="edad">
+		<option value="joven">De 15 a 30 años</option>
+		<option value="adulto">De 31 a 50 años</option>
+		<option value="mayor">De 51 a 70 años</option>
+	</select>
+	<select id="aficiones">
+	</select>
+
+<script type="text/javascript">
+	var opciones = {
+		joven: ['Salir de marcha', 'Deportes', 'Jugar'],
+		adulto: ['Salir de cena', 'Cuidar hijos'],
+		mayor: ['Salir de comida', 'Cuidar nietos']
+	}
+	$("#edad").change(function() {
+		var edad = $("#edad").val();
+		var aficiones = opciones[edad];
+		var htmlAficiones = '';
+		console.log(aficiones);
+		$.each(aficiones, function(index, aficion) {
+			 htmlAficiones = htmlAficiones + '<option>' + aficion + '</option>'
+		});
+		console.log (htmlAficiones);
+		$("#aficiones").html(htmlAficiones);
+	});
+
+</script>
+
+</body>
+</html>
